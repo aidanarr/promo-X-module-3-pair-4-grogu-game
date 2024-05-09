@@ -1,7 +1,12 @@
 import "../styles/App.scss"
-import backgroundImg from '../images/grogu.webp';
+import {useState} from 'react';
 
 function App() {
+  const [grogu, setGrogu] = useState(1);
+  const [items, setItems] = useState({cookies: 3, eggs: 3, frogs: 3});
+  const [dice, setDice] = useState();
+  const [game, setGame] = useState('ongoing');
+
   return (
     
     <>
