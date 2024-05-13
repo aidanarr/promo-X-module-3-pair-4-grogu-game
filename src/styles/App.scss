@@ -68,6 +68,13 @@ html {
     transform: scale(1.1);
 }
 
+.dice-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
 .game-status {
     font-size: 18px;
     font-weight: bold;
@@ -147,4 +154,8 @@ input[type="text"]::placeholder {
 
 .title {
    text-align: center;
+}
+
+.hidden{
+    display: none;
 }
