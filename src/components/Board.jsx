@@ -1,11 +1,23 @@
 import Grogu from "./Grogu";
 
 const Board = (prop) => {
-    
+
+    // const cells = [null, null, null, null, null, null, null];
+
+    const cells = Array(7).fill(null);
+
+    console.log(cells);
+
+    const cellList = () => {
+
+        return cells.map((cell, index) => <div className="cell" key={index}>{prop.moveGrogu === index ? <Grogu /> : ""}</div>)
+    }
 
     return (
+
         <section className="board">
-            <div className="cell">
+        {cellList()}
+            {/* <div className="cell">
                 {prop.moveGrogu === 1 ? <Grogu /> : ""}
             </div>
             <div className="cell">
@@ -25,7 +37,7 @@ const Board = (prop) => {
             </div>
             <div className="cell">
                 {prop.moveGrogu === 7 ? <Grogu /> : ""}
-            </div>
+            </div> */}
         </section>
     )
 }

@@ -5,7 +5,7 @@ import Board from "./Board";
 import Dice from "./Dice";
 
 function App() {
-  const [grogu, setGrogu] = useState(1);
+  const [grogu, setGrogu] = useState(0);
   const [dice, setDice] = useState(null);
   const [game, setGame] = useState('En curso.');
   const [cookies, setCookies] = useState(["🍪", "🍪", "🍪"]);
@@ -36,7 +36,7 @@ function App() {
       setMessage("Se ha descargado una rana.");
     }
     
-    
+    gameStatus();
   }
 
   const gameStatus = () => {
