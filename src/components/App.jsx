@@ -3,6 +3,8 @@ import {useState} from 'react';
 import Header from "./Header";
 import Board from "./Board";
 import Dice from "./Dice";
+import Form from "./Form";
+import GameStatus from "./GameStatus";
 
 function App() {
   const [grogu, setGrogu] = useState(0);
@@ -12,7 +14,7 @@ function App() {
   const [eggs, setEggs] = useState(["🥚", "🥚", "🥚"]);
   const [frogs, setFrogs] = useState(["🐸", "🐸", "🐸"]);
   const [message, setMessage] = useState("");
-  let hiddenClass = "hidden";
+  const [name, setName] = useState("");
 
   function getRandomNumber(max) {
     return Math.ceil(Math.random() * max);
@@ -24,16 +26,16 @@ function App() {
 
     if (randomNumber === 4) {
       setGrogu(grogu + 1);
-      setMessage("Grogu ha avanzado una casilla.");
+      setMessage(`${name} Grogu ha avanzado una casilla.`);
     } else if (randomNumber === 1 && cookies.length > 0) {
       setCookies(cookies.slice(1));
-      setMessage("Se ha descargado una cookie.");
+      setMessage(`${name} Se ha descargado una cookie.`);
     } else if (randomNumber === 2 && eggs.length > 0) {
       setEggs(eggs.slice(1));
-      setMessage("Se ha descargado un huevo.");
+      setMessage(`${name} Se ha descargado un huevo.`);
     } else if (randomNumber === 3 && frogs.length > 0) {
       setFrogs(frogs.slice(1));
-      setMessage("Se ha descargado una rana.");
+      setMessage(`${name} Se ha descargado una rana.`);
     }
     
     gameStatus();
@@ -51,14 +53,13 @@ function App() {
   return (
     
     <>
-    <Header />
+    <Header name={name}/>
     <main className="page">
+    <Form setName= {setName}/>
     <Board moveGrogu={grogu} />
       <section className= "dice-box">
         <Dice rollDice={rollDice} />
-        <p className={dice === null ? hiddenClass : ""}>Ha salido el número: {dice}</p>
-        <p>{message}</p>
-        <div className="game-status">{game}</div>
+        <GameStatus dice={dice} game={game} message={message} />
       </section>
       <section className="goods-container">
         <div className="goods-item">{cookies}</div>

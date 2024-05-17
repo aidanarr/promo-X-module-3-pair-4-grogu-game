@@ -1,7 +1,6 @@
 function Dice({rollDice}) {
     const handleClick = (event) => {
-        rollDice();
-        
+        rollDice();  
     }
   return (
     <>
