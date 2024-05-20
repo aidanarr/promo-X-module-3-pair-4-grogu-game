@@ -1,5 +1,5 @@
 import "../styles/App.scss"
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import Header from "./Header";
 import Board from "./Board";
 import Dice from "./Dice";
@@ -26,28 +26,32 @@ function App() {
 
     if (randomNumber === 4) {
       setGrogu(grogu + 1);
-      setMessage(`${name} Grogu ha avanzado una casilla.`);
+      setMessage(`${name !== "" ? name + ", Grogu ha avanzado una casilla." : "Grogu ha avanzado una casilla."}`);
     } else if (randomNumber === 1 && cookies.length > 0) {
       setCookies(cookies.slice(1));
-      setMessage(`${name} Se ha descargado una cookie.`);
+      setMessage(`${name !== "" ? name + ", se ha descargado una cookie." : "Se ha descargado una cookie."}`);
     } else if (randomNumber === 2 && eggs.length > 0) {
       setEggs(eggs.slice(1));
-      setMessage(`${name} Se ha descargado un huevo.`);
+      setMessage(`${name !== "" ? name + ", se ha descargado un huevo." : "Se ha descargado un huevo."}`);
     } else if (randomNumber === 3 && frogs.length > 0) {
       setFrogs(frogs.slice(1));
-      setMessage(`${name} Se ha descargado una rana.`);
+      setMessage(`${name !== "" ? name + ", se ha descargado una rana." : "Se ha descargado una rana."}`);
     }
     
     gameStatus();
   }
 
   const gameStatus = () => {
-    if (grogu === 7){
-      setGame("El juego ha terminado.")
+    if (grogu === 6){
+      setGame("¡¡Grogu se ha comido el cargamento!! Has perdido")
     }else if (cookies.length === 0 && eggs.length === 0 && frogs.length === 0){
-      setGame("El juego ha terminado.")
+      setGame("Ganaste. Mando completa la misión.")
     }
   }
+
+  useEffect(() => {
+    gameStatus()
+  },);
 
 
   return (
