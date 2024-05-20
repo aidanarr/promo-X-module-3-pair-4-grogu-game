@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 function Form(props) {
     const handleInputChange = (event) => {
         const value = event.target.value;
@@ -12,5 +14,10 @@ function Form(props) {
     </form>
   )
 }
+
+Form.propTypes = {
+  setName: PropTypes.func,
+};
+
 
 export default Form

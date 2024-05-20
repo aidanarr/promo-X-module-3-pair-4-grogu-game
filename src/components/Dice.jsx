@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 function Dice({rollDice}) {
     const handleClick = (event) => {
         rollDice();  
@@ -8,5 +10,9 @@ function Dice({rollDice}) {
     </>
   )
 }
+
+Dice.propTypes = {
+  rollDice: PropTypes.func,
+};
 
 export default Dice

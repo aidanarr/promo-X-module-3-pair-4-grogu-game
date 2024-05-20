@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 function GameStatus({dice, game, message}) {
 let hiddenClass = "hidden";
   return (
@@ -8,5 +10,11 @@ let hiddenClass = "hidden";
     </>
   )
 }
+
+GameStatus.propTypes = {
+  dice: PropTypes.number,
+  game: PropTypes.string,
+  message: PropTypes.string,
+};
 
 export default GameStatus

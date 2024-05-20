@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const Header = ({name}) => {
     if (name !== ""){
         name = ", " + name;
@@ -10,4 +12,9 @@ const Header = ({name}) => {
     )
 }
 
+Header.propTypes = {
+    name: PropTypes.string,
+};
+
 export default Header
+
