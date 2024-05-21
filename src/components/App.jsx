@@ -1,10 +1,11 @@
 import "../styles/App.scss"
 import {useState, useEffect} from 'react';
+import { Route, Routes } from "react-router-dom";
 import Header from "./Header";
-import Board from "./Board";
-import Dice from "./Dice";
-import Form from "./Form";
-import GameStatus from "./GameStatus";
+import Footer from "./Footer";
+import Instructions from "./Instructions";
+import Options from "./Options";
+import Game from "./Game";
 
 function App() {
   const [grogu, setGrogu] = useState(0);
@@ -59,26 +60,13 @@ function App() {
     <>
     <Header name={name}/>
     <main className="page">
-    <Form setName= {setName}/>
-    <Board moveGrogu={grogu} />
-      <section className= "dice-box">
-        <Dice rollDice={rollDice} />
-        <GameStatus dice={dice} game={game} message={message} />
-      </section>
-      <section className="goods-container">
-        <div className="goods-item">{cookies}</div>
-      </section>
-      <section className="goods-container">
-        <div className="goods-item">{eggs}</div>
-      </section>
-      <section className="goods-container">
-        <div className="goods-item">{frogs}</div>
-      </section>
-      <section>
-        <button className="restart-button">Reiniciar Juego</button>
-      </section>
+      <Routes>
+        <Route path="/instructions" element={<Instructions/>}/>
+        <Route path="/" element={<Game setName={setName} rollDice={rollDice} dice={dice} game={game} message={message} cookies= {cookies} eggs={eggs} frogs={frogs} grogu={grogu}/>} />
+        <Route path="/options" element={<Options/>}/>
+     </Routes>
     </main>
-    
+    <Footer/>
     </>
     
   )
